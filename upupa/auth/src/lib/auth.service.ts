@@ -31,6 +31,7 @@ function getCookie(name: string) {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+    private isLoggedInVar = false;
     refreshed$ = new Subject<number>()
     user?: Principle
     private _user$ = new ReplaySubject<Principle>(1)
@@ -315,4 +316,24 @@ export class AuthService {
         }
         return null
     }
+
+
+
+    LoggedIn() {
+
+      this.isLoggedInVar = true;
+    }
+
+    logout() {
+
+      this.isLoggedInVar = false;
+    }
+
+    isLoggedIn() {
+      return this.isLoggedInVar;
+    }
 }
+
+
+
+
